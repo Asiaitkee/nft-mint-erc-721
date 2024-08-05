@@ -85,7 +85,7 @@ To run the project follow the following steps:
 
 ## 1. Clone the repository
 ``` bash
-git clone https://github.com/asahicantu/NFT-Thesis.git
+git clone https://github.com/dulyawatikp/nft-mint-erc-721.git
 ```
 ## 2. Change to network folder
 Move to the repository's directory and then to the network directory
