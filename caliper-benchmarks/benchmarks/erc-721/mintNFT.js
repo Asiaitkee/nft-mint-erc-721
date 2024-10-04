@@ -51,6 +51,7 @@ class MintNFTWorkload extends WorkloadModuleBase {
         let ownerOrg = 'Org1';
         let filename = this.makeid(5);
         let date = 0;
+        
 
         let args = {
             contractId: 'erc-721',

@@ -1,6 +1,8 @@
-import { Gateway, GatewayOptions, Wallet, Wallets} from 'fabric-network'
+import { Gateway, GatewayOptions, Wallet, Wallets, X509Identity} from 'fabric-network'
 import { User, Client } from 'fabric-common'
 import FabricCAServices = require('fabric-ca-client');
+
+
 // import {ChaincodeExecOption} from 'interfaces/enums.interface';
 class AdminService {
   adminUserId: string = process.env.HYP_ADMIN_USER_ID as string
@@ -18,7 +20,9 @@ class AdminService {
     return caClient
   }
 
-   async buildWallet(walletPath: string | undefined, couchDbUrl:string|undefined): Promise<Wallet> {
+
+
+   async buildWallet(walletPath: string | undefined, couchDbUrl: string | undefined): Promise<Wallet> {
     // Create a new  wallet : Note that wallet is for managing identities.
     let wallet: Wallet
     if (walletPath) {
@@ -34,7 +38,8 @@ class AdminService {
       console.log('Built an in memory wallet')
     }
     return wallet
-  };
+  }
+  
 
   async enrollAdmin(caClient: FabricCAServices, wallet: Wallet, orgMspId: string): Promise<string> {
     var msg:string = 'ok'

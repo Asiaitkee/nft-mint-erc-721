@@ -182,7 +182,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{nftUrl}}",
+							"raw": "{{nftUrl}}",  
 							"host": [
 								"{{nftUrl}}"
 							]

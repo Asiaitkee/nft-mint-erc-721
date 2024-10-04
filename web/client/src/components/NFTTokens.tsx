@@ -16,8 +16,8 @@ export default function NFTTokens() {
         setLoading(true)
         const nftContent: Chaincode =
         {
-            organization: "Org2",
-            userId: "reciever",
+            organization: "Org1",
+            userId: "minter",
             channel: 'mychannel',
             name: 'erc721',
             functionName: "TotalSupply",

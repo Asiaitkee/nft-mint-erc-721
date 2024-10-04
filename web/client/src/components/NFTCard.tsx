@@ -32,12 +32,12 @@ export default function NFTCard(props: { nftToken: NFT | undefined }) {
     const handleDownload = async (nft: NFT) => {
         setLoading(true)
         const config: AxiosRequestConfig = {
-            baseURL: process.env.REACT_APP_BASE_URL as string,
+            baseURL: process.env.REACT_APP_BASE_URL as string, //REACT_APP_BASE_URL=http://localhost:3556/api/v1/
             headers: {
                 'Accept': '*/*',
             },
             responseType :'arraybuffer',
-            maxBodyLength: Number(process.env.REACT_APP_MAX_FILE_SIZE),
+            maxBodyLength: Number(process.env.REACT_APP_MAX_FILE_SIZE),  //REACT_APP_MAX_FILE_SIZE=9999999999999999
             maxContentLength: Number(process.env.REACT_APP_MAX_FILE_SIZE),
         }
         try {

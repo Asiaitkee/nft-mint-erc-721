@@ -6,10 +6,13 @@ import { User } from 'interfaces/register.interface'
 import DbService from '../services/db.service'
 var _ = require('underscore')
 import { NETWORK_SCOPE_ANYFORTX } from 'fabric-network/lib/impl/event/defaulteventhandlerstrategies'
+import { Enroll } from '../services/buildwallet.service';
+
 class AdminRouter {
   router: express.Router
   adminService: AdminService
   dbService: DbService
+  
   constructor() {
     this.router = express.Router()
     this.adminService = new AdminService()
@@ -46,6 +49,7 @@ class AdminRouter {
       const user = req.body as User
       const orgId = user.organization
       const config = await this.dbService.GetConfig(orgId)
+      console.log('config',config)
       if (!user) {
         next('Could not find user configuration')
       }
@@ -63,6 +67,26 @@ class AdminRouter {
         res.json(`User ${user.name} registerd with affiliation ${user.affilitation} for organization ${orgId}`)
       }
     })
+
+
+    this.router.post('/wallet', async (req, res, next) => {
+      const {userId} = req.body;
+      try {
+        if (!userId) {
+          throw new Error('User ID is required');
+      }
+      await Enroll(userId);
+      res.json({ message: `Successfully enrolled user ${userId}` });
+
+    }catch (error) {
+      if (error instanceof Error) {
+      next(`Failed to enroll user ${userId}: ${error.message}`);
+      } else {
+        next(`An unknown error occurred during enrollment`);
+      }
+    }
+    });
+
   }
 }
 export default AdminRouter

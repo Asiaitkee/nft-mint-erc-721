@@ -49,7 +49,7 @@ export default class IPFSRouter {
         files: content.map((f) => new TextDecoder().decode(f))
       }
       var buffer = Buffer.concat(content)
-      console.log(new Uint8Array(buffer))
+      //console.log(new Uint8Array(buffer))
       res.status(200).send(buffer)
     })
 

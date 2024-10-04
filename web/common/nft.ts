@@ -9,10 +9,13 @@ type NFT  = {
     Owner?: string
     Organization?: string
     FileName?: string
+    AssetName?: string
+    Description?: string
     Weight?: number
     ApprovedForTransfer?: string | object
     RankerOrganizations?: string[]
     Date?:number
+    price?: string
 }
 
 export type {NFT}

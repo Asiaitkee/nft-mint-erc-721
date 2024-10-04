@@ -16,9 +16,9 @@
 		"connection": {
 			"timeout": {
 				"peer": {
-					"endorser": "300"
+					"endorser": "600000"
 				},
-				"orderer": "300"
+				"orderer": "600000"
 			}
 		}
 	},
@@ -50,15 +50,16 @@
 	},
 	"peers": {
 		"peer0.org1.example.com": {
-			"tlsCACerts": {
-				"path": "/tmp/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+            "tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1.pem"
+
 			},
 			"url": "grpcs://peer0.org1.example.com:7051"
 		},
 		"peer0.org2.example.com": {
-			"tlsCACerts": {
-				"path": "/tmp/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
-			},
+            "tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/tlscacerts/tls-localhost-8054-ca-org2.pem"
+            },
 			"url": "grpcs://peer0.org2.example.com:9051"
 		}
 	},
@@ -68,9 +69,9 @@
 			"httpOptions": {
 				"verify": false
 			},
-			"tlsCACerts": {
-				"path": "/tmp/crypto/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
-			},
+            "tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org1.example.com/msp/cacerts/localhost-7054-ca-org1.pem"
+            },
 			"caName": "ca0-org1"
 		},
 		"ca1": {
@@ -78,9 +79,9 @@
 			"httpOptions": {
 				"verify": false
 			},
-			"tlsCACerts": {
-				"path": "/tmp/crypto/peerOrganizations/org2.example.com/ca/ca.org1.example.com-cert.pem"
-			},
+            "tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org2.example.com/msp/cacerts/localhost-8054-ca-org2.pem"
+            },
 			"caName": "ca0-org2"
 		}
 	}

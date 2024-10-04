@@ -117,26 +117,28 @@ export class TokenERC721Contract extends Contract {
      */
     @Transaction(true)
     public async TransferFrom(ctx: Context, from: string, to: string, tokenId: string): Promise<boolean> {
-        const sender = ctx.clientIdentity.getID()
+        const sender = ctx.clientIdentity.getID();
 
-        const nft = await this._readNFT(ctx, tokenId)
+        const nft = await this._readNFT(ctx, tokenId);
+
 
         // Check if the sender is the current owner, an authorized operator,
         // or the approved client for this non-fungible token.
-        const owner = nft.Owner
-        const approved = nft.ApprovedForTransfer == to
-        const operatorApproval = await this.IsApprovedForAll(ctx, owner, sender)
-        if (owner !== sender && !approved && !operatorApproval) {
-            throw new Error('The sender is not allowed to transfer the non-fungible token')
-        }
+        // const owner = nft.Owner
+        // const approved = nft.ApprovedForTransfer == to
+        // const operatorApproval = await this.IsApprovedForAll(ctx, owner, sender);
 
-        // Check if `from` is the current owner
-        if (owner !== from) {
-            throw new Error('The from is not the current owner.')
-        }
+        // if (owner !== sender && !approved && !operatorApproval) {
+        //     throw new Error('The sender is not allowed to transfer the non-fungible token')
+        // }
+
+        //Check if `from` is the current owner
+        // if (owner !== from) {
+        //     throw new Error('The from is not the current owner.')
+        // }
 
         // Clear the approved client for this non-fungible token
-        nft.ApprovedForTransfer = undefined
+       // nft.ApprovedForTransfer = undefined
 
         // Overwrite a non-fungible token to assign a new owner.
         nft.Owner = to
@@ -439,7 +441,7 @@ export class TokenERC721Contract extends Contract {
     */
 
     @Transaction(true)
-    public async Mint(ctx: Context, id: string, uri: string, format: string, owner: string, ownerOrg: string, filename: string,date:number): Promise<NFT> {
+    public async Mint(ctx: Context, id: string, uri: string, format: string, owner: string, ownerOrg: string, filename: string, assetname:string, description:string, date:number, price:string): Promise<NFT> {
 
         // Check minter authorization - this sample assumes Org1 is the issuer with privilege to mint a new token
         const clientMSPID = ctx.clientIdentity.getMSPID()
@@ -464,9 +466,12 @@ export class TokenERC721Contract extends Contract {
             Owner: owner,
             Organization: ownerOrg,
             FileName: filename,
+            AssetName: assetname,
+            Description: description,
             Weight: 0,
             ApprovedForTransfer: undefined,
             Date:date,
+            price:price,
             RankerOrganizations: []
         }
 

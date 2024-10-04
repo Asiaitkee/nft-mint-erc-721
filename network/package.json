@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/sharp": "^0.32.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}

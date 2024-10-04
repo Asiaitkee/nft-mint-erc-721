@@ -9,7 +9,7 @@ chmod +x compose/ipfs/init.sh
 
 # infoln "Generating a swarm key"
 # # Generate a swarm key and output into a file 
-# docker run --rm golang:1.9 sh -c 'go get github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen && ipfs-swarm-key-gen' > ../compose/ipfs/swarm.key
+docker run --rm golang:1.9 sh -c 'go get github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen && ipfs-swarm-key-gen' > /home/asia/nft-mint-erc-721/network/compose/ipfs/swarm.key
 
 infoln "Composing services..."
 docker compose -f ./compose/docker-compose-ipfs.yaml up -d
